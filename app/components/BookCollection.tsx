@@ -59,9 +59,9 @@ function BookCollection() {
       </div>
       <div className="w-full flex">
         <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-					{filteredBooks().map((book: Book, i) => {
-						const rows = filteredBooks().length / page;
-						const idx = (i + 1) / page;
+          {filteredBooks().map((book: Book, i) => {
+            const rows = filteredBooks().length / page;
+            const idx = (i + 1) / page;
             if (idx == rows)
               return (
                 <BookCard book={book} key={`${book.id}-${i}`} innerRef={ref} />
@@ -70,8 +70,8 @@ function BookCollection() {
           })}
         </div>
         {fetching && (
-          <div className="text-primary font-bold w-full flex items-center justify-center">
-            Loading...
+          <div className="text-primary fixed bottom-10 font-bold w-full flex items-center justify-center">
+            Load More...
           </div>
         )}
       </div>

@@ -69,7 +69,7 @@ function OrderCollection() {
           })}
         </div>
         {fetching && (
-          <div className="text-primary font-bold w-full flex items-center justify-center">
+          <div className="text-primary fixed bottom-10 font-bold w-full flex items-center justify-center">
             Loading...
           </div>
         )}
