@@ -27,7 +27,8 @@ interface MainState {
   ) => void;
   loginAccount: (email: string, password: string) => void;
   retrieveOrders: () => void;
-  cancelMyOrder: (id:number) => void;
+  cancelMyOrder: (id: number) => void;
+  resetPage: () => void;
 }
 
 export const useMainStore = create<MainState>((set, get) => ({
@@ -110,11 +111,10 @@ export const useMainStore = create<MainState>((set, get) => ({
         books.push(book);
       }
     }
-    if (res && res.books.length == 0) set({ lastPage: true });
+    if (res && !res.books) set({ lastPage: true });
 
     set({ books: [...currentBooks, ...books] });
-    set({ fetching: false });
-    set({ loading: false });
+    set({ fetching: false, loading: false });
   },
   goCheckout: async (cart: Cart) => {
     set({ loading: true });
@@ -164,22 +164,25 @@ export const useMainStore = create<MainState>((set, get) => ({
         orders.push(order);
       }
     }
-    if (res && res.orders.length == 0) set({ lastPage: true });
+    if (res && !res.orders) set({ lastPage: true });
 
     set({ orders: [...currentOrders, ...orders] });
     set({ fetching: false });
     set({ loading: false });
   },
   cancelMyOrder: async (id: number) => {
-    const res:any = await cancelOrder(id);
+    const res: any = await cancelOrder(id);
     if (res && res.success) {
       let orders = get().orders;
       const ix = orders.findIndex((it: Order) => {
         return it.id == id;
-      })
+      });
       orders[ix].canceled = 1;
       set({ orders: orders });
     }
     return res;
-  }
+  },
+  resetPage: () => {
+    set({ lastPage: false, loading: false, fetching: false, page: 1 });
+  },
 }));

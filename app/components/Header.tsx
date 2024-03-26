@@ -22,6 +22,10 @@ function Header() {
   const gotoOrder = () => {
     router.push("/order");
   }
+  const _setFocused = () => {
+    setFocused(true);
+    goHome();
+  };
   const gotoCart = () => {
     router.push("/cart");
   };
@@ -63,7 +67,7 @@ function Header() {
               }`}
             >
               <input
-                onFocus={() => setFocused(true)}
+                onFocus={() => _setFocused()}
                 onBlur={() => setFocused(false)}
                 onChange={(e) => setSearchKey(e.target.value)}
                 type="search"

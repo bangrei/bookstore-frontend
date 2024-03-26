@@ -81,7 +81,9 @@ export default function Home() {
           onClick={() => _login()}
           className="w-full flex flex-col items-center gap-1 border bg-secondary rounded-lg p-[12px] cursor-pointer hover:opacity-70"
         >
-          <span className="text-white">Login</span>
+          <span className="text-white">
+            {loading ? "Please wait..." : "Login"}
+          </span>
         </div>
         <div className="w-full flex items-center justify-center gap-2 p-4">
           <span className="text-slate-500 text-xs">Don't have account?</span>

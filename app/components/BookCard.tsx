@@ -50,6 +50,7 @@ const BookCard: React.FC<BookProps> = ({ book, innerRef }) => {
         <div className="rounded-md overflow-hidden relative">
           <img src={book.image} alt={book.title} className="w-full" />
         </div>
+        <div className="font-semibold text-slate-500">ID: #{book.id}</div>
         <div className="block line-clamp-2 mt-2 text-ellipsis overflow-hidden break-words font-bold">
           {book.title}
         </div>

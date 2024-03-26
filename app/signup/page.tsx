@@ -61,7 +61,8 @@ export default function Home() {
             First Name
           </label>
           <input
-            type="text" ref={firstnameRef}
+            type="text"
+            ref={firstnameRef}
             placeholder="First Name"
             className="w-full px-4 py-2 border rounded-md border-slate-200 outline-none focus:border-primary text-md font-normal"
           />
@@ -71,7 +72,8 @@ export default function Home() {
             Last Name
           </label>
           <input
-            type="text" ref={lastnameRef}
+            type="text"
+            ref={lastnameRef}
             placeholder="Last Name"
             className="w-full px-4 py-2 border rounded-md border-slate-200 outline-none focus:border-primary text-md font-normal"
           />
@@ -81,7 +83,8 @@ export default function Home() {
             Email Address
           </label>
           <input
-            type="email" ref={emailRef}
+            type="email"
+            ref={emailRef}
             placeholder="Email Address"
             className="w-full px-4 py-2 border rounded-md border-slate-200 outline-none focus:border-primary text-md font-normal"
           />
@@ -91,13 +94,19 @@ export default function Home() {
             Password
           </label>
           <input
-            type="password" ref={passwordRef}
+            type="password"
+            ref={passwordRef}
             placeholder="Password"
             className="w-full px-4 py-2 border rounded-md border-slate-200 outline-none focus:border-primary text-md font-normal"
           />
         </div>
-        <div onClick={()=>_signUp()} className="w-full flex flex-col items-center gap-1 border bg-secondary rounded-lg p-4 cursor-pointer hover:opacity-70">
-          <span className="text-white">Create Account</span>
+        <div
+          onClick={() => _signUp()}
+          className="w-full flex flex-col items-center gap-1 border bg-secondary rounded-lg p-4 cursor-pointer hover:opacity-70"
+        >
+          <span className="text-white">
+            {loading ? "Please wait..." : "Create account"}
+          </span>
         </div>
         <div className="w-full flex items-center justify-center gap-2 p-4">
           <span className="text-slate-500 text-xs">Already have account?</span>
