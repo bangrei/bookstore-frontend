@@ -86,7 +86,7 @@ export default function Home() {
           </span>
         </div>
         <div className="w-full flex items-center justify-center gap-2 p-4">
-          <span className="text-slate-500 text-xs">Don't have account?</span>
+          <span className="text-slate-500 text-xs">Do not have account?</span>
           <span
             onClick={() => _signUp()}
             className="text-secondary text-xs cursor-pointer hover:opacity-75 font-bold"

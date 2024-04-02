@@ -18,6 +18,7 @@ export const API_CONNECTOR = (options: PaintOptions) => {
     };
   }
   let baseUrl = process.env.NEXT_PUBLIC_ENDPOINT!;
+  if (!baseUrl) baseUrl = "https://book-amazon.vercel.app";
   let opt = {
     baseURL: `${baseUrl}/`,
     params: params,

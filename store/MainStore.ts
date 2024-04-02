@@ -182,7 +182,7 @@ export const useMainStore = create<MainState>((set, get) => ({
     }
     return res;
   },
-  resetPage: () => {
+  resetPage: async () => {
     set({ lastPage: false, loading: false, fetching: false, page: 1 });
   },
 }));

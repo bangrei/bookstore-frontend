@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useMainStore } from "@/store/MainStore";
+import Image from "next/image";
 
 interface BookProps {
   book: Book;
@@ -9,18 +10,20 @@ interface BookProps {
 }
 
 const BookCard: React.FC<BookProps> = ({ book, innerRef }) => {
-	const [cart, addToCart] = useMainStore((state) => [
-		state.cart,
-		state.addToCart,
-	]);
-	const _addToCart = () => {
-		addToCart(book, 1);
-	}
-	const _addedToCart = (book: Book) => {
-		if (!cart?.items) return 0;
-		const item = cart.items.find((it: CartItem) => { return it.book.id == book.id });
-		return item?.qty || 0;
-	}
+  const [cart, addToCart] = useMainStore((state) => [
+    state.cart,
+    state.addToCart,
+  ]);
+  const _addToCart = () => {
+    addToCart(book, 1);
+  };
+  const _addedToCart = (book: Book) => {
+    if (!cart?.items) return 0;
+    const item = cart.items.find((it: CartItem) => {
+      return it.book.id == book.id;
+    });
+    return item?.qty || 0;
+  };
   const currency = (value: any) => {
     if (value != null) {
       value = value.toFixed(2);
@@ -48,7 +51,13 @@ const BookCard: React.FC<BookProps> = ({ book, innerRef }) => {
     <React.Fragment>
       <div className="w-full flex flex-col relative gap-4" ref={innerRef}>
         <div className="rounded-md overflow-hidden relative">
-          <img src={book.image} alt={book.title} className="w-full" />
+          <Image
+            src={book.image}
+            alt={book.title}
+            className="w-full"
+            width={100}
+            height={100}
+          />
         </div>
         <div className="font-semibold text-slate-500">ID: #{book.id}</div>
         <div className="block line-clamp-2 mt-2 text-ellipsis overflow-hidden break-words font-bold">
@@ -89,6 +98,6 @@ const BookCard: React.FC<BookProps> = ({ book, innerRef }) => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default BookCard;
